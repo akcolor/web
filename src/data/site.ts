@@ -45,10 +45,21 @@ export const SITE = {
 
 export type NavItem = { label: string; href: string };
 
+/** Header navigation. */
 export const NAV: NavItem[] = [
   { label: 'Ana Sayfa', href: '/' },
   { label: 'Hizmetler', href: '/#services' },
   { label: 'Fotoğraf Baskısı', href: '/#fotograf-baskisi' },
+  { label: 'Dijital Kartvizit', href: '/#dijital-kartvizit' },
+  { label: 'İletişim', href: '/#contact' },
+];
+
+/** Footer "Hızlı Linkler" list (keeps Hakkımızda and S.S.S.). */
+export const FOOTER_NAV: NavItem[] = [
+  { label: 'Ana Sayfa', href: '/' },
+  { label: 'Hizmetler', href: '/#services' },
+  { label: 'Fotoğraf Baskısı', href: '/#fotograf-baskisi' },
+  { label: 'Dijital Kartvizit', href: '/#dijital-kartvizit' },
   { label: 'Hakkımızda', href: '/#about' },
   { label: 'S.S.S.', href: '/sss/' },
   { label: 'İletişim', href: '/#contact' },

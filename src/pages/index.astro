@@ -104,6 +104,33 @@ const description = SITE.description;
     </div>
   </section>
 
+  <!-- Dijital Kartvizit -->
+  <section id="dijital-kartvizit" class="section kartvizit">
+    <div class="container kartvizit-inner">
+      <div class="kartvizit-text">
+        <p class="eyebrow">Yeni</p>
+        <h2>Ücretsiz Dijital Kartvizit Oluştur</h2>
+        <p class="kartvizit-lead">
+          Kağıt kartvizitlere veda edin. Ücretsiz dijital kartvizitinizi oluşturup Apple Wallet veya
+          Google Wallet'a ekleyin.
+        </p>
+        <a href="https://addvcard.com/" class="btn btn-primary" target="_blank" rel="noopener">
+          Kartvizit Oluştur
+        </a>
+      </div>
+      <div class="kartvizit-media">
+        <img
+          src="/cards.webp"
+          alt="Apple Wallet ve Google Wallet uyumlu dijital kartvizit örneği"
+          width="1052"
+          height="1104"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+    </div>
+  </section>
+
   <!-- About -->
   <section id="about" class="section about">
     <div class="container about-inner">
@@ -354,6 +381,38 @@ const description = SITE.description;
     font-size: 0.95rem;
   }
 
+  /* Dijital Kartvizit */
+  .kartvizit-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .kartvizit-text h2 {
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    margin-bottom: 1rem;
+  }
+
+  .kartvizit-lead {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    max-width: 46ch;
+    margin-bottom: 1.75rem;
+  }
+
+  .kartvizit-media {
+    display: flex;
+    justify-content: center;
+  }
+
+  .kartvizit-media img {
+    width: 100%;
+    max-width: 460px;
+    height: auto;
+    border-radius: var(--radius);
+  }
+
   /* About */
   .about-inner {
     display: grid;
@@ -507,8 +566,12 @@ const description = SITE.description;
 
   @media (max-width: 860px) {
     .about-inner,
-    .contact-inner {
+    .contact-inner,
+    .kartvizit-inner {
       grid-template-columns: 1fr;
+    }
+    .kartvizit-media {
+      order: -1;
     }
     .services-grid,
     .print-grid,

@@ -1,5 +1,5 @@
 ---
-import { SITE, NAV, FOOTER_SERVICES } from '../data/site';
+import { SITE, FOOTER_NAV, FOOTER_SERVICES } from '../data/site';
 
 const year = new Date().getFullYear();
 ---
@@ -16,7 +16,7 @@ const year = new Date().getFullYear();
     <nav class="footer-col" aria-label="Site bağlantıları">
       <h2>Hızlı Linkler</h2>
       <ul>
-        {NAV.map((item) => (
+        {FOOTER_NAV.map((item) => (
           <li><a href={item.href}>{item.label}</a></li>
         ))}
       </ul>
