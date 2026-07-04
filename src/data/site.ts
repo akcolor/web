@@ -29,6 +29,8 @@ export const SITE = {
   email: 'info@akcolor.com',
   priceRange: '$$',
   maps: 'https://maps.google.com/maps?q=Akcolor+Fotoğrafçılık+Sipahioğlu+Cd+No:4/A+34149+Bakırköy+İstanbul',
+  directions:
+    'https://www.google.com/maps/dir/?api=1&destination=Akcolor+Fotoğrafçılık+Sipahioğlu+Cd+No:4/A+34149+Bakırköy+İstanbul',
   reviewUrl:
     'https://search.google.com/local/writereview?placeid=ChIJtbrhPyKjyhQR60QLWkhpwCE',
   hours: [
