@@ -1,7 +1,4 @@
 ---
-import { Image } from 'astro:assets';
-import logoLight from '../assets/logo-light.png';
-import logoDark from '../assets/logo-dark.png';
 import { SITE, NAV, FOOTER_SERVICES } from '../data/site';
 
 const year = new Date().getFullYear();
@@ -10,10 +7,7 @@ const year = new Date().getFullYear();
 <footer class="footer">
   <div class="container footer-content">
     <div class="footer-col footer-about">
-      <div class="footer-logo">
-        <Image src={logoLight} alt="" width={120} height={120} class="logo logo-light" />
-        <Image src={logoDark} alt="" width={120} height={120} class="logo logo-dark" />
-      </div>
+      <a href="/" class="footer-logo-text">AKCOLOR <span>Fotoğrafçılık</span></a>
       <p class="footer-tagline">
         {SITE.founded}'ten beri Bakırköy'de profesyonel biyometrik fotoğraf ve baskı hizmeti.
       </p>
@@ -69,23 +63,17 @@ const year = new Date().getFullYear();
     margin-bottom: 2.5rem;
   }
 
-  .footer-logo .logo {
-    width: 96px;
-    height: 96px;
-    border-radius: 12px;
-    object-fit: contain;
+  .footer-logo-text {
+    display: inline-block;
+    font-weight: 700;
+    font-size: 1.25rem;
+    letter-spacing: 0.02em;
+    color: var(--text-primary);
   }
 
-  .footer-logo .logo-dark {
-    display: none;
-  }
-
-  :global([data-theme='dark']) .footer-logo .logo-light {
-    display: none;
-  }
-
-  :global([data-theme='dark']) .footer-logo .logo-dark {
-    display: block;
+  .footer-logo-text span {
+    font-weight: 500;
+    color: var(--text-secondary);
   }
 
   .footer-tagline {
@@ -139,10 +127,6 @@ const year = new Date().getFullYear();
     .footer-content {
       grid-template-columns: 1fr;
       text-align: center;
-    }
-    .footer-logo {
-      display: flex;
-      justify-content: center;
     }
     address {
       justify-items: center;
