@@ -1,0 +1,42 @@
+{
+  "order": 1,
+  "title": "Schengen Vize Fotoğrafı Çekimi",
+  "shortTitle": "Schengen Vize Fotoğrafı",
+  "metaTitle": "Schengen Vize Fotoğrafı Çekimi Bakırköy | Akcolor",
+  "metaDescription": "Bakırköy'de Schengen vize fotoğrafı çekimi. 35x45 mm, beyaz arka plan, biyometrik standartlara uygun. Akcolor Fotoğrafçılık'ta anında teslim.",
+  "subtitle": "Schengen (Avrupa) vize başvurusu için ICAO biyometrik standartlarına uygun fotoğraf çekimi.",
+  "image": "../../assets/schengen-vize.jpg",
+  "imageAlt": "Schengen vize fotoğrafı örneği - 35x45 mm biyometrik uyumlu, beyaz arka plan",
+  "dimensions": "35 x 45 mm",
+  "intro": [
+    "Schengen vize fotoğrafı, Avrupa Birliği ve Schengen bölgesi ülkelerine yapılan vize başvurularında istenen, ICAO biyometrik standartlarına uygun özel bir fotoğraf türüdür. 35x45 mm boyutunda ve beyaz arka planlı olması zorunludur.",
+    "Akcolor Fotoğrafçılık olarak Bakırköy stüdyomuzda Schengen vize başvuruları için gerekli tüm standartlara uygun çekim yapıyor, fotoğraflarınızı anında teslim ediyoruz. Konsolosluk veya vize merkezi ret riskini en aza indiririz."
+  ],
+  "specs": [
+    { "label": "Fotoğraf Boyutu", "value": "35 x 45 mm (3.5 x 4.5 cm)" },
+    { "label": "Arka Plan", "value": "Beyaz / açık gri (düz)" },
+    { "label": "Yüz Oranı", "value": "Çenenin altından saç tepesine %70-80" },
+    { "label": "İfade", "value": "Nötr ifade, ağız kapalı, gözler açık" },
+    { "label": "Gözlük", "value": "Cam parlaması ve çerçeve göz engeli olmamalı" },
+    { "label": "Geçerlilik", "value": "Son 6 ay içinde çekilmiş olmalı" }
+  ],
+  "faqs": [
+    {
+      "question": "Schengen vize fotoğrafı ölçüsü nedir?",
+      "answer": "Schengen vize fotoğrafı 35x45 mm (3.5x4.5 cm) boyutunda olmalıdır. Yüz, çenenin altından saçın tepesine kadar fotoğrafın yaklaşık %70-80'ini kaplamalıdır."
+    },
+    {
+      "question": "Schengen vize fotoğrafında arka plan rengi ne olmalı?",
+      "answer": "Arka plan düz beyaz veya çok açık gri olmalıdır. Desenli, renkli veya gölgeli arka planlar kabul edilmez."
+    },
+    {
+      "question": "Gözlükle Schengen vize fotoğrafı çektirebilir miyim?",
+      "answer": "Evet, ancak gözlük camında parlama olmamalı ve çerçeve gözleri kapatmamalıdır. Konsolosluklar giderek gözlüksüz fotoğraf önermektedir; stüdyomuzda size en uygun şekilde yönlendirme yapıyoruz."
+    },
+    {
+      "question": "Schengen vize fotoğrafı ne kadar sürede hazır olur?",
+      "answer": "Çekim ve baskı işlemi birkaç dakika içinde tamamlanır, fotoğraflarınızı aynı gün anında teslim alırsınız."
+    }
+  ],
+  "related": ["abd-vize", "pasaport-fotografi", "standart-vesikalik"]
+}

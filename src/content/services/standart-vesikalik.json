@@ -1,0 +1,41 @@
+{
+  "order": 6,
+  "title": "Standart Vesikalık Fotoğraf Çekimi",
+  "shortTitle": "Standart Vesikalık",
+  "metaTitle": "Vesikalık Fotoğraf Çekimi Bakırköy | Akcolor Fotoğrafçılık",
+  "metaDescription": "Bakırköy'de standart vesikalık fotoğraf çekimi. Klasik ölçülerde hızlı, profesyonel çekim ve anında baskı. Akcolor Fotoğrafçılık, 1983'ten beri hizmetinizde.",
+  "subtitle": "Okul, iş başvurusu ve resmi işlemler için klasik ölçülerde hızlı ve profesyonel vesikalık çekimi.",
+  "image": "../../assets/vesikalik.jpg",
+  "imageAlt": "Standart vesikalık fotoğraf örneği - profesyonel stüdyo çekimi",
+  "dimensions": "4.5 x 6 cm (klasik)",
+  "intro": [
+    "Standart vesikalık fotoğraf; okul kayıtları, iş başvuruları, abonelikler ve çeşitli resmi işlemler için kullanılan klasik ölçülerdeki fotoğraftır. Genellikle 4.5x6 cm boyutunda hazırlanır.",
+    "Akcolor Fotoğrafçılık olarak 1983'ten beri Bakırköy'de profesyonel stüdyo aydınlatması ile hızlı vesikalık çekimi yapıyor, fotoğraflarınızı anında teslim ediyoruz."
+  ],
+  "specs": [
+    { "label": "Fotoğraf Boyutu", "value": "4.5 x 6 cm (klasik vesikalık)" },
+    { "label": "Arka Plan", "value": "Beyaz veya mavi (talebe göre)" },
+    { "label": "Aydınlatma", "value": "Profesyonel stüdyo ışığı" },
+    { "label": "Kullanım", "value": "Okul, iş başvurusu, resmi işlemler" },
+    { "label": "Teslim", "value": "Anında baskı ve teslim" }
+  ],
+  "faqs": [
+    {
+      "question": "Vesikalık fotoğraf ölçüsü nedir?",
+      "answer": "Klasik vesikalık fotoğraf genellikle 4.5x6 cm boyutunda hazırlanır. İhtiyacınıza göre farklı ölçülerde de baskı yapabiliriz."
+    },
+    {
+      "question": "Vesikalık için arka plan rengini seçebilir miyim?",
+      "answer": "Evet, kullanım amacına göre beyaz veya mavi arka plan seçeneği sunuyoruz."
+    },
+    {
+      "question": "Vesikalık çekimi ne kadar sürer?",
+      "answer": "Çekim ve baskı birkaç dakika içinde tamamlanır; fotoğraflarınızı anında teslim alırsınız."
+    },
+    {
+      "question": "Kıyafet ve makyaj için öneriniz var mı?",
+      "answer": "Sade, tek renk kıyafetler ve doğal makyaj en iyi sonucu verir. Stüdyomuzda çekim öncesi yönlendirme yapıyoruz."
+    }
+  ],
+  "related": ["kimlik-fotografi", "pasaport-fotografi", "schengen-vize"]
+}

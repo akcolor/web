@@ -1,0 +1,261 @@
+---
+import { Image } from 'astro:assets';
+import ThemeToggle from './ThemeToggle.tsx';
+import logoLight from '../assets/logo-light.png';
+import logoDark from '../assets/logo-dark.png';
+import { NAV, SITE } from '../data/site';
+---
+
+<header class="navbar">
+  <nav class="nav-container" aria-label="Ana menü">
+    <a href="/" class="nav-logo" aria-label={`${SITE.name} ana sayfa`}>
+      <Image src={logoLight} alt="" width={100} height={100} class="logo logo-light" loading="eager" />
+      <Image src={logoDark} alt="" width={100} height={100} class="logo logo-dark" loading="eager" />
+      <span class="logo-text">AKCOLOR <span>Fotoğrafçılık</span></span>
+    </a>
+
+    <ul class="nav-menu" id="navMenu">
+      {
+        NAV.map((item) => (
+          <li>
+            <a href={item.href} class="nav-link">
+              {item.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="nav-controls">
+      <ThemeToggle client:load />
+      <button
+        type="button"
+        class="hamburger"
+        id="hamburger"
+        aria-label="Menüyü aç"
+        aria-expanded="false"
+        aria-controls="navMenu"
+      >
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<style>
+  .navbar {
+    background-color: color-mix(in srgb, var(--bg-primary) 88%, transparent);
+    backdrop-filter: saturate(180%) blur(12px);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    border-bottom: 1px solid var(--border-color);
+    transition: box-shadow var(--transition);
+  }
+
+  .navbar.scrolled {
+    box-shadow: var(--shadow);
+  }
+
+  .nav-container {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 0.75rem 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--text-primary);
+    flex-shrink: 0;
+  }
+
+  .logo {
+    width: 46px;
+    height: 46px;
+    border-radius: 10px;
+    object-fit: contain;
+  }
+
+  .logo-dark {
+    display: none;
+  }
+
+  :global([data-theme='dark']) .logo-light {
+    display: none;
+  }
+
+  :global([data-theme='dark']) .logo-dark {
+    display: block;
+  }
+
+  .logo-text {
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: 0.02em;
+  }
+
+  .logo-text span {
+    font-weight: 500;
+    color: var(--text-secondary);
+  }
+
+  .nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 1.75rem;
+    align-items: center;
+  }
+
+  .nav-link {
+    color: var(--text-primary);
+    font-weight: 500;
+    font-size: 0.98rem;
+    position: relative;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0;
+    height: 2px;
+    background: var(--accent-primary);
+    transition: width var(--transition);
+  }
+
+  .nav-link:hover {
+    color: var(--accent-primary);
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  .nav-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  :global(.theme-toggle) {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    color: var(--accent-primary);
+    cursor: pointer;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform var(--transition), background-color var(--transition);
+  }
+
+  :global(.theme-toggle:hover) {
+    transform: scale(1.06);
+    background: var(--bg-tertiary);
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.4rem;
+  }
+
+  .bar {
+    width: 24px;
+    height: 2px;
+    background-color: var(--text-primary);
+    border-radius: 2px;
+    transition: transform var(--transition), opacity var(--transition);
+  }
+
+  @media (max-width: 860px) {
+    .nav-menu {
+      position: fixed;
+      inset: 68px 0 auto 0;
+      flex-direction: column;
+      background-color: var(--bg-primary);
+      width: 100%;
+      padding: 1.5rem 0;
+      gap: 1.25rem;
+      border-bottom: 1px solid var(--border-color);
+      box-shadow: var(--shadow);
+      transform: translateX(-100%);
+      transition: transform var(--transition);
+    }
+
+    .nav-menu.active {
+      transform: translateX(0);
+    }
+
+    .hamburger {
+      display: flex;
+    }
+
+    .hamburger[aria-expanded='true'] .bar:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .hamburger[aria-expanded='true'] .bar:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger[aria-expanded='true'] .bar:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+  }
+
+  @media (max-width: 520px) {
+    .logo-text span {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const navMenu = document.getElementById('navMenu');
+  const navbar = document.querySelector('.navbar');
+
+  function closeMenu() {
+    hamburger?.setAttribute('aria-expanded', 'false');
+    hamburger?.setAttribute('aria-label', 'Menüyü aç');
+    navMenu?.classList.remove('active');
+  }
+
+  hamburger?.addEventListener('click', () => {
+    const open = hamburger.getAttribute('aria-expanded') === 'true';
+    hamburger.setAttribute('aria-expanded', String(!open));
+    hamburger.setAttribute('aria-label', open ? 'Menüyü aç' : 'Menüyü kapat');
+    navMenu?.classList.toggle('active', !open);
+  });
+
+  navMenu?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeMenu();
+  });
+
+  const onScroll = () => {
+    navbar?.classList.toggle('scrolled', window.scrollY > 20);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+</script>

@@ -1,0 +1,131 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Faq from '../components/Faq.astro';
+import { SITE } from '../data/site';
+import { faqSchema, breadcrumbSchema } from '../lib/schema';
+
+const services = (await getCollection('services')).sort(
+  (a, b) => a.data.order - b.data.order
+);
+
+const generalFaqs = [
+  {
+    question: 'Biyometrik fotoğraf nedir?',
+    answer:
+      'Biyometrik fotoğraf, ICAO uluslararası standartlarına göre çekilen; yüz hatlarının net, arka planın düz, ifadenin nötr olduğu resmi belge fotoğrafıdır. Pasaport, kimlik, ehliyet ve vize başvurularında kullanılır.',
+  },
+  {
+    question: 'Randevu almam gerekiyor mu?',
+    answer:
+      'Randevusuz gelebilirsiniz; çekim ve baskı birkaç dakikada tamamlanır. Yoğunluğu önlemek isterseniz WhatsApp veya telefonla önceden ulaşabilirsiniz.',
+  },
+  {
+    question: 'Fotoğraflar ne kadar sürede teslim edilir?',
+    answer:
+      'Vesikalık ve biyometrik fotoğraflar aynı gün, çoğu zaman birkaç dakika içinde basılıp teslim edilir. Vize başvuruları için dijital dosya da veriyoruz.',
+  },
+  {
+    question: 'Kart ile ödeme kabul ediyor musunuz?',
+    answer:
+      'Evet, nakit ve kredi/banka kartı ile ödeme yapabilirsiniz. Detaylar için stüdyomuzla iletişime geçebilirsiniz.',
+  },
+];
+
+const serviceFaqs = services.flatMap((s) => s.data.faqs);
+const allFaqs = [...generalFaqs, ...serviceFaqs];
+
+const title = 'Sıkça Sorulan Sorular | Akcolor Fotoğrafçılık';
+const description =
+  'Biyometrik fotoğraf, vesikalık, vize, pasaport, kimlik ve ehliyet fotoğrafı hakkında sıkça sorulan sorular ve yanıtları. Akcolor Fotoğrafçılık, Bakırköy.';
+
+const schema = [
+  faqSchema(allFaqs),
+  breadcrumbSchema([
+    { name: 'Ana Sayfa', url: SITE.url + '/' },
+    { name: 'S.S.S.', url: SITE.url + '/sss/' },
+  ]),
+];
+---
+
+<BaseLayout title={title} description={description} path="/sss/">
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} is:inline />
+  </Fragment>
+
+  <section class="section sss">
+    <div class="container">
+      <header class="sss-header">
+        <p class="eyebrow">Yardım</p>
+        <h1>Sıkça Sorulan Sorular</h1>
+        <p class="sss-lead">
+          Biyometrik fotoğraf, vize, pasaport, kimlik ve ehliyet çekimleri hakkında en çok merak edilenler.
+        </p>
+      </header>
+
+      <div class="sss-block">
+        <Faq items={generalFaqs} title="Genel Sorular" />
+      </div>
+
+      {
+        services.map((s) => (
+          <div class="sss-block">
+            <Faq items={s.data.faqs} title={s.data.shortTitle} />
+          </div>
+        ))
+      }
+
+      <div class="sss-cta">
+        <p>Sorunuzun yanıtını bulamadınız mı?</p>
+        <div class="sss-actions">
+          <a href={`https://wa.me/${SITE.whatsapp.number}`} class="btn btn-primary" target="_blank" rel="noopener">WhatsApp'tan Sor</a>
+          <a href={`tel:${SITE.phone.tel}`} class="btn btn-secondary">{SITE.phone.display}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .sss {
+    padding-top: 7rem;
+    background-color: var(--bg-secondary);
+  }
+
+  .sss-header {
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto 2.5rem;
+  }
+
+  .sss-header h1 {
+    font-size: clamp(1.9rem, 4vw, 2.75rem);
+    margin-bottom: 0.75rem;
+  }
+
+  .sss-lead {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+  }
+
+  .sss-block {
+    margin-bottom: 2.5rem;
+  }
+
+  .sss-cta {
+    text-align: center;
+    margin-top: 1rem;
+  }
+
+  .sss-cta p {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+  }
+
+  .sss-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+</style>

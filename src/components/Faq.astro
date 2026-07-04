@@ -1,0 +1,92 @@
+---
+interface Props {
+  items: { question: string; answer: string }[];
+  title?: string;
+}
+
+const { items, title = 'Sıkça Sorulan Sorular' } = Astro.props;
+
+const headingId = `faq-${title
+  .toLocaleLowerCase('tr')
+  .replace(/[^a-z0-9ğüşiöç]+/gi, '-')
+  .replace(/^-+|-+$/g, '')}`;
+---
+
+<section class="faq" aria-labelledby={headingId}>
+  <h2 id={headingId}>{title}</h2>
+  <div class="faq-list">
+    {
+      items.map((item) => (
+        <details class="faq-item">
+          <summary>
+            <span>{item.question}</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </summary>
+          <p>{item.answer}</p>
+        </details>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .faq {
+    max-width: 780px;
+    margin: 0 auto;
+  }
+
+  .faq h2 {
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    text-align: center;
+    margin-bottom: 1.75rem;
+  }
+
+  .faq-list {
+    display: grid;
+    gap: 0.85rem;
+  }
+
+  .faq-item {
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+  }
+
+  summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.1rem 1.35rem;
+    font-weight: 600;
+    cursor: pointer;
+    list-style: none;
+    color: var(--text-primary);
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  summary svg {
+    flex-shrink: 0;
+    color: var(--accent-primary);
+    transition: transform var(--transition);
+  }
+
+  .faq-item[open] summary svg {
+    transform: rotate(180deg);
+  }
+
+  .faq-item p {
+    padding: 0 1.35rem 1.2rem;
+    color: var(--text-secondary);
+  }
+
+  .faq-item[open] summary {
+    color: var(--accent-primary);
+  }
+</style>

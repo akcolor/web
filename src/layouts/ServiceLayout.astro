@@ -1,0 +1,327 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
+import BaseLayout from './BaseLayout.astro';
+import Faq from '../components/Faq.astro';
+import { SITE } from '../data/site';
+import {
+  serviceSchema,
+  breadcrumbSchema,
+  faqSchema,
+} from '../lib/schema';
+
+interface Props {
+  entry: CollectionEntry<'services'>;
+}
+
+const { entry } = Astro.props;
+const s = entry.data;
+const path = `/${entry.id}/`;
+const url = new URL(path, SITE.url).href;
+
+const allServices = await getCollection('services');
+const related = s.related
+  .map((slug) => allServices.find((e) => e.id === slug))
+  .filter((e): e is CollectionEntry<'services'> => Boolean(e));
+
+const schema = [
+  serviceSchema({ name: s.title, description: s.metaDescription, url }),
+  breadcrumbSchema([
+    { name: 'Ana Sayfa', url: SITE.url + '/' },
+    { name: s.shortTitle, url },
+  ]),
+  faqSchema(s.faqs),
+];
+---
+
+<BaseLayout title={s.metaTitle} description={s.metaDescription} path={path}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} is:inline />
+  </Fragment>
+
+  <article class="service">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Site haritası">
+        <a href="/">Ana Sayfa</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">{s.shortTitle}</span>
+      </nav>
+
+      <header class="service-header">
+        <p class="eyebrow">Biyometrik Fotoğraf</p>
+        <h1>{s.title}</h1>
+        <p class="service-subtitle">{s.subtitle}</p>
+      </header>
+
+      <div class="service-grid">
+        <div class="service-body">
+          <div class="specs-card">
+            <h2>Fotoğraf Özellikleri</h2>
+            <table class="specs-table">
+              <tbody>
+                {
+                  s.specs.map((spec) => (
+                    <tr>
+                      <th scope="row">{spec.label}</th>
+                      <td>{spec.value}</td>
+                    </tr>
+                  ))
+                }
+              </tbody>
+            </table>
+          </div>
+
+          <div class="service-desc">
+            <h2>Hizmet Açıklaması</h2>
+            {s.intro.map((p) => <p>{p}</p>)}
+          </div>
+        </div>
+
+        <aside class="service-media">
+          <Image
+            src={s.image}
+            alt={s.imageAlt}
+            widths={[360, 540, 720]}
+            sizes="(max-width: 860px) 92vw, 460px"
+            class="service-photo"
+          />
+          <div class="cta-card">
+            <p class="cta-dim">{s.dimensions}</p>
+            <p>Fotoğrafınızı anında çekip teslim ediyoruz.</p>
+            <a href={`https://wa.me/${SITE.whatsapp.number}`} class="btn btn-primary" target="_blank" rel="noopener">
+              WhatsApp'tan Yaz
+            </a>
+            <a href={`tel:${SITE.phone.tel}`} class="btn btn-secondary">{SITE.phone.display}</a>
+          </div>
+        </aside>
+      </div>
+
+      <div class="faq-wrap">
+        <Faq items={s.faqs} />
+      </div>
+
+      {
+        related.length > 0 && (
+          <section class="related" aria-labelledby="related-heading">
+            <h2 id="related-heading">İlgili Hizmetler</h2>
+            <div class="related-grid">
+              {related.map((r) => (
+                <a href={`/${r.id}/`} class="related-card">
+                  <span class="related-title">{r.data.shortTitle}</span>
+                  <span class="related-dim">{r.data.dimensions}</span>
+                </a>
+              ))}
+            </div>
+          </section>
+        )
+      }
+
+      <div class="service-cta">
+        <a href="/#contact" class="btn btn-primary">İletişime Geç</a>
+        <a href="/#services" class="btn btn-secondary">Diğer Hizmetler</a>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .service {
+    padding: 6.5rem 0 3rem;
+    background-color: var(--bg-secondary);
+  }
+
+  .breadcrumb {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .breadcrumb a {
+    color: var(--text-secondary);
+  }
+
+  .service-header {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 2.5rem;
+  }
+
+  .service-header h1 {
+    font-size: clamp(1.75rem, 4vw, 2.6rem);
+    margin-bottom: 0.75rem;
+  }
+
+  .service-subtitle {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+  }
+
+  .service-grid {
+    display: grid;
+    grid-template-columns: 1fr 0.85fr;
+    gap: 2.5rem;
+    margin-bottom: 3.5rem;
+    align-items: start;
+  }
+
+  .service-body {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .specs-card,
+  .service-desc {
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+  }
+
+  .specs-card h2,
+  .service-desc h2 {
+    font-size: 1.3rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .specs-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .specs-table th,
+  .specs-table td {
+    text-align: left;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: top;
+  }
+
+  .specs-table tr:last-child th,
+  .specs-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .specs-table th {
+    color: var(--accent-primary);
+    font-weight: 600;
+    width: 42%;
+    padding-right: 1rem;
+  }
+
+  .specs-table td {
+    color: var(--text-secondary);
+  }
+
+  .service-desc p {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+  }
+
+  .service-desc p:last-child {
+    margin-bottom: 0;
+  }
+
+  .service-media {
+    position: sticky;
+    top: 90px;
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .service-photo {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow);
+  }
+
+  .cta-card {
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    display: grid;
+    gap: 0.75rem;
+    text-align: center;
+  }
+
+  .cta-dim {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--accent-primary);
+  }
+
+  .cta-card p:not(.cta-dim) {
+    color: var(--text-secondary);
+    margin-bottom: 0.25rem;
+  }
+
+  .faq-wrap {
+    margin: 1rem 0 3.5rem;
+  }
+
+  .related {
+    margin-bottom: 3rem;
+  }
+
+  .related h2 {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  .related-card {
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    padding: 1.25rem;
+    display: grid;
+    gap: 0.35rem;
+    color: var(--text-primary);
+    transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+  }
+
+  .related-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent-primary);
+    box-shadow: var(--shadow-hover);
+  }
+
+  .related-title {
+    font-weight: 600;
+  }
+
+  .related-dim {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+
+  .service-cta {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 860px) {
+    .service-grid {
+      grid-template-columns: 1fr;
+    }
+    .service-media {
+      position: static;
+    }
+    .related-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

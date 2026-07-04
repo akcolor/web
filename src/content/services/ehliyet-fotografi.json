@@ -1,0 +1,42 @@
+{
+  "order": 5,
+  "title": "Ehliyet Fotoğrafı Çekimi",
+  "shortTitle": "Ehliyet Fotoğrafı",
+  "metaTitle": "Ehliyet Fotoğrafı Çekimi 50x60 mm Bakırköy | Akcolor",
+  "metaDescription": "Bakırköy'de yeni ehliyet ve sürücü belgesi için biyometrik ehliyet fotoğrafı çekimi. 50x60 mm, standartlara uygun. Akcolor Fotoğrafçılık'ta anında teslim.",
+  "subtitle": "Yeni sürücü belgesi (ehliyet) başvuruları için biyometrik standartlara uygun fotoğraf çekimi.",
+  "image": "../../assets/ehliyet.jpg",
+  "imageAlt": "Ehliyet fotoğrafı örneği - 50x60 mm biyometrik uyumlu, beyaz arka plan",
+  "dimensions": "50 x 60 mm",
+  "intro": [
+    "Yeni sürücü belgesi (ehliyet) fotoğrafı, biyometrik standartlara uygun 50x60 mm boyutunda ve düz beyaz arka planlı olmalıdır. Yüz net ve ortalı olmalı, ifade nötr tutulmalıdır.",
+    "Akcolor Fotoğrafçılık olarak Bakırköy stüdyomuzda ehliyet başvurularınız için biyometrik standartlara uygun çekim yapıyor, fotoğraflarınızı anında teslim ediyoruz."
+  ],
+  "specs": [
+    { "label": "Fotoğraf Boyutu", "value": "50 x 60 mm (5 x 6 cm)" },
+    { "label": "Arka Plan", "value": "Beyaz (düz)" },
+    { "label": "Yüz Pozisyonu", "value": "Tam karşıdan, yüz net ve ortalı" },
+    { "label": "İfade", "value": "Nötr ifade, ağız kapalı, gözler açık" },
+    { "label": "Standart", "value": "Biyometrik" },
+    { "label": "Geçerlilik", "value": "Son 6 ay içinde çekilmiş olmalı" }
+  ],
+  "faqs": [
+    {
+      "question": "Ehliyet fotoğrafı ölçüsü nedir?",
+      "answer": "Yeni sürücü belgesi (ehliyet) fotoğrafı 50x60 mm (5x6 cm) boyutunda, beyaz arka planlı ve biyometrik standartlara uygun olmalıdır."
+    },
+    {
+      "question": "Ehliyet için kaç adet fotoğraf gerekiyor?",
+      "answer": "Ehliyet başvurusunda genellikle biyometrik fotoğraf istenir. Stüdyomuzda ihtiyacınıza göre istediğiniz adette baskı yapıyoruz."
+    },
+    {
+      "question": "Aynı fotoğrafı hem ehliyet hem kimlik için kullanabilir miyim?",
+      "answer": "Ehliyet, kimlik ve pasaport 50x60 mm biyometrik standardı paylaşır; aynı çekimden her belge için baskı alabilirsiniz."
+    },
+    {
+      "question": "Ehliyet fotoğrafı ne kadar sürede hazır olur?",
+      "answer": "Çekim ve baskı birkaç dakika sürer; fotoğraflarınızı aynı gün anında teslim alırsınız."
+    }
+  ],
+  "related": ["kimlik-fotografi", "pasaport-fotografi", "standart-vesikalik"]
+}

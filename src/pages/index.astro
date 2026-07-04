@@ -1,0 +1,559 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../data/site';
+import { localBusinessSchema } from '../lib/schema';
+import heroLight from '../assets/akcolor-hero-light.png';
+import heroDark from '../assets/akcolor-hero-dark.png';
+
+const services = (await getCollection('services')).sort(
+  (a, b) => a.data.order - b.data.order
+);
+
+const printSizes = [
+  { size: '10 x 15 cm', use: 'Klasik fotoğraf baskısı' },
+  { size: '13 x 18 cm', use: 'Portre ve aile fotoğrafı' },
+  { size: '15 x 21 cm', use: 'Büyük tebrik ve hatıra' },
+  { size: '20 x 25 cm', use: 'Çerçeveleme için ideal' },
+  { size: '20 x 30 cm', use: 'Poster boy baskı' },
+  { size: 'Özel Ölçü', use: 'Talebinize özel ölçüler' },
+];
+
+const testimonials = [
+  { text: 'Çok profesyonel hizmet aldım, fotoğraflarım mükemmel çıktı. Kesinlikle tavsiye ederim.', author: 'Ahmet Y.' },
+  { text: 'Schengen vize fotoğrafım için gittim; çok hızlı ve standartlara uygun çekim yaptılar.', author: 'Ayşe D.' },
+  { text: '40 yılı aşkın deneyim gerçekten fark ediliyor. Güler yüzlü ve titiz çalışıyorlar.', author: 'Mehmet K.' },
+];
+
+const title = 'Akcolor Fotoğrafçılık | Bakırköy Biyometrik & Vesikalık Fotoğraf';
+const description = SITE.description;
+---
+
+<BaseLayout title={title} description={description} path="/">
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema())} is:inline />
+  </Fragment>
+
+  <!-- Hero -->
+  <section id="home" class="hero">
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <p class="eyebrow">1983'ten beri Bakırköy'de</p>
+        <h1>Uluslararası standartlarda biyometrik fotoğraf çekimi</h1>
+        <p class="hero-lead">
+          Vize, pasaport, kimlik ve ehliyet fotoğraflarınızı ICAO biyometrik standartlarına uygun çekiyor,
+          yüksek kaliteli fotoğraf baskısı yapıyoruz. Deneyimli ekibimizle stüdyomuza bekleriz.
+        </p>
+        <div class="hero-buttons">
+          <a href="#services" class="btn btn-primary">Hizmetleri İncele</a>
+          <a href={`https://wa.me/${SITE.whatsapp.number}`} class="btn btn-secondary" target="_blank" rel="noopener">
+            WhatsApp'tan Randevu
+          </a>
+        </div>
+        <ul class="hero-trust">
+          <li>ICAO biyometrik uyumlu</li>
+          <li>Anında baskı & teslim</li>
+          <li>40+ yıl deneyim</li>
+        </ul>
+      </div>
+      <div class="hero-media">
+        <Image src={heroLight} alt="Akcolor Fotoğrafçılık stüdyosu - Bakırköy" class="hero-img hero-light" widths={[480, 720, 960]} sizes="(max-width: 860px) 92vw, 540px" loading="eager" fetchpriority="high" />
+        <Image src={heroDark} alt="Akcolor Fotoğrafçılık stüdyosu - Bakırköy" class="hero-img hero-dark" widths={[480, 720, 960]} sizes="(max-width: 860px) 92vw, 540px" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="section services">
+    <div class="container">
+      <h2 class="section-title">Biyometrik Fotoğraf Hizmetleri</h2>
+      <p class="section-lead">
+        Her belge türü için doğru ölçü ve standartta çekim. Detaylar için hizmete tıklayın.
+      </p>
+      <div class="services-grid">
+        {
+          services.map((s) => (
+            <a href={`/${s.id}/`} class="service-card">
+              <h3>{s.data.shortTitle}</h3>
+              <p class="service-dim">{s.data.dimensions}</p>
+              <p class="service-sub">{s.data.subtitle}</p>
+              <span class="service-more">Detaylar →</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Print sizes -->
+  <section id="fotograf-baskisi" class="section print">
+    <div class="container">
+      <h2 class="section-title">Fotoğraf Baskısı Ölçüleri</h2>
+      <p class="section-lead">
+        Tüm baskılar yüksek kaliteli kağıt ve renk kalibrasyonu ile üretilir. Özel ölçüler için bize ulaşın.
+      </p>
+      <div class="print-grid">
+        {
+          printSizes.map((p) => (
+            <div class="print-card">
+              <span class="print-size">{p.size}</span>
+              <span class="print-use">{p.use}</span>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="section about">
+    <div class="container about-inner">
+      <div class="about-text">
+        <p class="eyebrow">Hakkımızda</p>
+        <h2>1983'ten beri Bakırköy'ün fotoğrafçısı</h2>
+        <p>
+          Akcolor Fotoğrafçılık, 1983 yılından bu yana Bakırköy Yeşilyurt'ta profesyonel fotoğraf çekimi ve
+          baskı hizmeti veriyor. Kırk yılı aşkın deneyimimizle biyometrik vesikalık, vize, pasaport, kimlik ve
+          ehliyet fotoğraflarını uluslararası standartlara uygun hazırlıyoruz.
+        </p>
+        <p>
+          Vesikalık çekiminin yanı sıra fotoğraf baskısı, Photoshop düzenleme ve özel gün fotoğraf-video
+          çekimleriyle de yanınızdayız. Deneyimli ekibimiz, her başvurunun gerektirdiği ölçü ve kurallara
+          hâkimdir; böylece konsolosluk ve resmi kurum ret riskini en aza indiririz.
+        </p>
+      </div>
+      <div class="about-stats">
+        <div class="stat">
+          <span class="stat-num">40+</span>
+          <span class="stat-label">Yıllık deneyim</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">1M+</span>
+          <span class="stat-label">Mutlu müşteri</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">7/6</span>
+          <span class="stat-label">Gün açık (Paz hariç)</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">Anında</span>
+          <span class="stat-label">Baskı & teslim</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section contact">
+    <div class="container">
+      <h2 class="section-title">İletişim</h2>
+      <div class="contact-inner">
+        <div class="contact-info">
+          <div class="contact-item">
+            <h3>Adres</h3>
+            <p>{SITE.address.streetAddress}<br />{SITE.address.postalCode} {SITE.address.locality}/{SITE.address.region}</p>
+          </div>
+          <div class="contact-item">
+            <h3>Telefon</h3>
+            <p><a href={`tel:${SITE.phone.tel}`}>{SITE.phone.display}</a></p>
+          </div>
+          <div class="contact-item">
+            <h3>WhatsApp</h3>
+            <p><a href={`https://wa.me/${SITE.whatsapp.number}`} target="_blank" rel="noopener">{SITE.whatsapp.display}</a></p>
+          </div>
+          <div class="contact-item">
+            <h3>E-posta</h3>
+            <p><a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+          </div>
+          <div class="contact-item contact-hours">
+            <h3>Çalışma Saatleri</h3>
+            <ul>
+              {SITE.hoursDisplay.map((h) => (
+                <li><span>{h.label}</span><span>{h.value}</span></li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        <div class="contact-map">
+          <iframe
+            src="https://www.google.com/maps?q=Akcolor%20Foto%C4%9Fraf%C3%A7%C4%B1l%C4%B1k%20Sipahio%C4%9Flu%20Cd%20No:4/A%2034149%20Bak%C4%B1rk%C3%B6y&output=embed"
+            width="100%"
+            height="100%"
+            style="border:0;"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Akcolor Fotoğrafçılık konumu - Sipahioğlu Cd No:4/A, Bakırköy"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section class="section reviews">
+    <div class="container">
+      <h2 class="section-title">Müşteri Yorumları</h2>
+      <p class="section-lead">
+        Yorumların tamamını Google işletme profilimizde görebilir, siz de deneyiminizi paylaşabilirsiniz.
+      </p>
+      <div class="reviews-grid">
+        {
+          testimonials.map((t) => (
+            <figure class="review-card">
+              <div class="review-stars" aria-label="5 üzerinden 5 yıldız">★★★★★</div>
+              <blockquote>{t.text}</blockquote>
+              <figcaption>— {t.author}</figcaption>
+            </figure>
+          ))
+        }
+      </div>
+      <div class="reviews-actions">
+        <a href={SITE.maps} class="btn btn-secondary" target="_blank" rel="noopener">Google'da Yorumları Gör</a>
+        <a href={SITE.reviewUrl} class="btn btn-primary" target="_blank" rel="noopener">Yorum Yaz</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Hero */
+  .hero {
+    padding: 8rem 0 4rem;
+    background: linear-gradient(180deg, var(--bg-secondary), var(--bg-primary));
+  }
+
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-lead {
+    color: var(--text-secondary);
+    font-size: 1.15rem;
+    max-width: 46ch;
+    margin-bottom: 2rem;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+
+  .hero-trust {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    list-style: none;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+
+  .hero-trust li {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .hero-trust li::before {
+    content: '✓';
+    color: var(--accent-primary);
+    font-weight: 700;
+  }
+
+  .hero-media {
+    background-color: var(--bg-tertiary);
+    border-radius: var(--radius);
+    min-height: 200px;
+  }
+
+  .hero-img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+  }
+
+  .hero-dark {
+    display: none;
+  }
+
+  :global([data-theme='dark']) .hero-light {
+    display: none;
+  }
+
+  :global([data-theme='dark']) .hero-dark {
+    display: block;
+  }
+
+  /* Services */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .service-card {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    color: var(--text-primary);
+    display: grid;
+    gap: 0.5rem;
+    align-content: start;
+    transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+  }
+
+  .service-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-primary);
+    box-shadow: var(--shadow-hover);
+  }
+
+  .service-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .service-dim {
+    color: var(--accent-primary);
+    font-weight: 600;
+  }
+
+  .service-sub {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+  }
+
+  .service-more {
+    color: var(--accent-primary);
+    font-weight: 600;
+    margin-top: 0.25rem;
+  }
+
+  /* Print */
+  .print {
+    background-color: var(--bg-secondary);
+  }
+
+  .print-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  .print-card {
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    text-align: center;
+    display: grid;
+    gap: 0.35rem;
+    transition: transform var(--transition), border-color var(--transition);
+  }
+
+  .print-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent-primary);
+  }
+
+  .print-size {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--accent-primary);
+  }
+
+  .print-use {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+  }
+
+  /* About */
+  .about-inner {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .about-text h2 {
+    font-size: clamp(1.6rem, 3.5vw, 2.25rem);
+    margin-bottom: 1.25rem;
+  }
+
+  .about-text p {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+  }
+
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .stat {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    text-align: center;
+    display: grid;
+    gap: 0.35rem;
+  }
+
+  .stat-num {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--accent-primary);
+  }
+
+  .stat-label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+  }
+
+  /* Contact */
+  .contact {
+    background-color: var(--bg-secondary);
+  }
+
+  .contact-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+
+  .contact-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+
+  .contact-item {
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    padding: 1.25rem;
+  }
+
+  .contact-item h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .contact-item p,
+  .contact-hours li {
+    color: var(--text-secondary);
+  }
+
+  .contact-hours {
+    grid-column: 1 / -1;
+  }
+
+  .contact-hours ul {
+    list-style: none;
+    display: grid;
+    gap: 0.4rem;
+  }
+
+  .contact-hours li {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    max-width: 320px;
+  }
+
+  .contact-map {
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    min-height: 340px;
+    box-shadow: var(--shadow);
+  }
+
+  .contact-map iframe {
+    width: 100%;
+    height: 100%;
+    min-height: 340px;
+    display: block;
+  }
+
+  /* Reviews */
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .review-card {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    margin: 0;
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .review-stars {
+    color: #f5b301;
+    font-size: 1.1rem;
+  }
+
+  .review-card blockquote {
+    color: var(--text-secondary);
+    font-style: italic;
+    margin: 0;
+  }
+
+  .review-card figcaption {
+    font-weight: 600;
+  }
+
+  .reviews-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 860px) {
+    .hero-inner,
+    .about-inner,
+    .contact-inner {
+      grid-template-columns: 1fr;
+    }
+    .hero-media {
+      order: -1;
+    }
+    .services-grid,
+    .print-grid,
+    .reviews-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 560px) {
+    .services-grid,
+    .print-grid,
+    .reviews-grid,
+    .about-stats,
+    .contact-info {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,42 @@
+{
+  "order": 3,
+  "title": "Pasaport Fotoğrafı Çekimi",
+  "shortTitle": "Pasaport Fotoğrafı",
+  "metaTitle": "Pasaport Fotoğrafı Çekimi 50x60 mm Bakırköy | Akcolor",
+  "metaDescription": "Bakırköy'de biyometrik pasaport fotoğrafı çekimi. 50x60 mm, Türkiye pasaport ve Nüfus Müdürlüğü standartlarına uygun. Akcolor Fotoğrafçılık'ta anında teslim.",
+  "subtitle": "Türkiye Cumhuriyeti pasaport başvuruları için biyometrik standartlara uygun fotoğraf çekimi.",
+  "image": "../../assets/pasaport.jpg",
+  "imageAlt": "Pasaport fotoğrafı örneği - 50x60 mm biyometrik uyumlu, beyaz arka plan",
+  "dimensions": "50 x 60 mm",
+  "intro": [
+    "Türkiye pasaport fotoğrafı, Nüfus ve Vatandaşlık İşleri Genel Müdürlüğü standartlarına uygun 50x60 mm boyutunda ve biyometrik özelliklerde olmalıdır. Yüz net görünmeli, arka plan düz beyaz olmalıdır.",
+    "Akcolor Fotoğrafçılık olarak Bakırköy stüdyomuzda pasaport başvurularınız için biyometrik standartlara tam uyumlu çekim yapıyor, fotoğraflarınızı anında teslim ediyoruz."
+  ],
+  "specs": [
+    { "label": "Fotoğraf Boyutu", "value": "50 x 60 mm (5 x 6 cm)" },
+    { "label": "Arka Plan", "value": "Beyaz (düz)" },
+    { "label": "Yüz Pozisyonu", "value": "Tam karşıdan, yüz net ve ortalı" },
+    { "label": "İfade", "value": "Nötr ifade, ağız kapalı, gözler açık" },
+    { "label": "Standart", "value": "NVİ / ICAO biyometrik" },
+    { "label": "Geçerlilik", "value": "Son 6 ay içinde çekilmiş olmalı" }
+  ],
+  "faqs": [
+    {
+      "question": "Pasaport fotoğrafı ölçüsü nedir?",
+      "answer": "Türkiye pasaport fotoğrafı 50x60 mm (5x6 cm) boyutunda, beyaz arka planlı ve biyometrik standartlara uygun olmalıdır."
+    },
+    {
+      "question": "Kaç adet pasaport fotoğrafı gerekiyor?",
+      "answer": "Pasaport başvurusunda genellikle biyometrik fotoğraf istenir. Stüdyomuzda ihtiyacınıza göre istediğiniz adette baskı yapıyoruz."
+    },
+    {
+      "question": "Bebek ve çocuk pasaport fotoğrafı çekiyor musunuz?",
+      "answer": "Evet. Bebek ve çocuklar için biyometrik standartlara uygun, sabırlı ve deneyimli çekim yapıyoruz."
+    },
+    {
+      "question": "Pasaport fotoğrafı ne kadar sürede hazır olur?",
+      "answer": "Çekim ve baskı birkaç dakika sürer; fotoğraflarınızı aynı gün anında teslim alırsınız."
+    }
+  ],
+  "related": ["kimlik-fotografi", "ehliyet-fotografi", "schengen-vize"]
+}

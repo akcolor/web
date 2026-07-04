@@ -1,0 +1,151 @@
+---
+import { Image } from 'astro:assets';
+import logoLight from '../assets/logo-light.png';
+import logoDark from '../assets/logo-dark.png';
+import { SITE, NAV, FOOTER_SERVICES } from '../data/site';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container footer-content">
+    <div class="footer-col footer-about">
+      <div class="footer-logo">
+        <Image src={logoLight} alt="" width={120} height={120} class="logo logo-light" />
+        <Image src={logoDark} alt="" width={120} height={120} class="logo logo-dark" />
+      </div>
+      <p class="footer-tagline">
+        {SITE.founded}'ten beri Bakırköy'de profesyonel biyometrik fotoğraf ve baskı hizmeti.
+      </p>
+    </div>
+
+    <nav class="footer-col" aria-label="Site bağlantıları">
+      <h2>Hızlı Linkler</h2>
+      <ul>
+        {NAV.map((item) => (
+          <li><a href={item.href}>{item.label}</a></li>
+        ))}
+      </ul>
+    </nav>
+
+    <nav class="footer-col" aria-label="Hizmetler">
+      <h2>Hizmetlerimiz</h2>
+      <ul>
+        {FOOTER_SERVICES.map((item) => (
+          <li><a href={item.href}>{item.label}</a></li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class="footer-col">
+      <h2>İletişim</h2>
+      <address>
+        <p><strong>{SITE.name}</strong></p>
+        <p>{SITE.address.streetAddress}<br />{SITE.address.postalCode} {SITE.address.locality}/{SITE.address.region}</p>
+        <p>Tel: <a href={`tel:${SITE.phone.tel}`}>{SITE.phone.display}</a></p>
+        <p>WhatsApp: <a href={`https://wa.me/${SITE.whatsapp.number}`}>{SITE.whatsapp.display}</a></p>
+        <p>E-posta: <a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+      </address>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; {year} {SITE.name}. Tüm hakları saklıdır.</p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background-color: var(--bg-tertiary);
+    border-top: 1px solid var(--border-color);
+    padding: 3.5rem 0 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .footer-content {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+    gap: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .footer-logo .logo {
+    width: 96px;
+    height: 96px;
+    border-radius: 12px;
+    object-fit: contain;
+  }
+
+  .footer-logo .logo-dark {
+    display: none;
+  }
+
+  :global([data-theme='dark']) .footer-logo .logo-light {
+    display: none;
+  }
+
+  :global([data-theme='dark']) .footer-logo .logo-dark {
+    display: block;
+  }
+
+  .footer-tagline {
+    color: var(--text-secondary);
+    margin-top: 1rem;
+    max-width: 30ch;
+  }
+
+  .footer-col h2 {
+    font-size: 1.05rem;
+    margin-bottom: 1rem;
+  }
+
+  .footer-col ul {
+    list-style: none;
+    display: grid;
+    gap: 0.55rem;
+  }
+
+  .footer-col a {
+    color: var(--text-secondary);
+  }
+
+  .footer-col a:hover {
+    color: var(--accent-primary);
+  }
+
+  address {
+    font-style: normal;
+    color: var(--text-secondary);
+    display: grid;
+    gap: 0.55rem;
+  }
+
+  .footer-bottom {
+    border-top: 1px solid var(--border-color);
+    padding-top: 1.5rem;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 860px) {
+    .footer-content {
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .footer-content {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+    .footer-logo {
+      display: flex;
+      justify-content: center;
+    }
+    address {
+      justify-items: center;
+    }
+  }
+</style>

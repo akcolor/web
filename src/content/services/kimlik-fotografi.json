@@ -1,0 +1,42 @@
+{
+  "order": 4,
+  "title": "Kimlik Fotoğrafı Çekimi",
+  "shortTitle": "Kimlik Fotoğrafı",
+  "metaTitle": "Kimlik Fotoğrafı Çekimi 50x60 mm Bakırköy | Akcolor",
+  "metaDescription": "Bakırköy'de yeni T.C. kimlik kartı için biyometrik kimlik fotoğrafı çekimi. 50x60 mm, Nüfus Müdürlüğü standartlarına uygun. Akcolor Fotoğrafçılık.",
+  "subtitle": "Yeni çipli T.C. kimlik kartı başvuruları için biyometrik standartlara uygun fotoğraf çekimi.",
+  "image": "../../assets/kimlik.jpg",
+  "imageAlt": "Kimlik fotoğrafı örneği - 50x60 mm biyometrik uyumlu, beyaz arka plan",
+  "dimensions": "50 x 60 mm",
+  "intro": [
+    "Yeni çipli T.C. kimlik kartı fotoğrafı, Nüfus ve Vatandaşlık İşleri Müdürlüğü standartlarına uygun 50x60 mm boyutunda ve biyometrik özelliklerde olmalıdır. Yüz hatları net görünmeli, arka plan düz beyaz olmalıdır.",
+    "Akcolor Fotoğrafçılık olarak Bakırköy stüdyomuzda yeni kimlik kartı başvurularınız için biyometrik standartlara uygun çekim yapıyor, fotoğraflarınızı anında teslim ediyoruz."
+  ],
+  "specs": [
+    { "label": "Fotoğraf Boyutu", "value": "50 x 60 mm (5 x 6 cm)" },
+    { "label": "Arka Plan", "value": "Beyaz (düz)" },
+    { "label": "Yüz Pozisyonu", "value": "Tam karşıdan, yüz net ve ortalı" },
+    { "label": "İfade", "value": "Nötr ifade, ağız kapalı, gözler açık" },
+    { "label": "Standart", "value": "NVİ biyometrik" },
+    { "label": "Geçerlilik", "value": "Son 6 ay içinde çekilmiş olmalı" }
+  ],
+  "faqs": [
+    {
+      "question": "Yeni kimlik kartı fotoğrafı ölçüsü nedir?",
+      "answer": "Yeni çipli T.C. kimlik kartı fotoğrafı 50x60 mm (5x6 cm) boyutunda, beyaz arka planlı ve biyometrik standartlara uygun olmalıdır."
+    },
+    {
+      "question": "Nüfus Müdürlüğü'ne giderken fotoğraf götürmek gerekiyor mu?",
+      "answer": "Evet, kimlik kartı başvurusunda biyometrik fotoğraf istenir. Stüdyomuzdan aldığınız fotoğraflar başvuru için uygundur."
+    },
+    {
+      "question": "Başörtülü kimlik fotoğrafı çektirebilir miyim?",
+      "answer": "Evet. Yüz hatları (çene, yüz ovali, iki göz) açık şekilde görünecek biçimde başörtülü biyometrik fotoğraf çekimi yapılabilir."
+    },
+    {
+      "question": "Kimlik fotoğrafı ne kadar sürede hazır olur?",
+      "answer": "Çekim ve baskı birkaç dakika sürer; fotoğraflarınızı aynı gün anında teslim alırsınız."
+    }
+  ],
+  "related": ["pasaport-fotografi", "ehliyet-fotografi", "standart-vesikalik"]
+}
